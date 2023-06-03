@@ -11,9 +11,9 @@ jobs:
 
     - name: Download ngrok
       run: |
-        Invoke-WebRequest https://raw.githubusercontent.com/GManOfficial/FREE-NGROk-RDP/raw/main/resources/ngrok.zip -OutFile ngrok.zip
-        Invoke-WebRequest https://raw.githubusercontent.com/GManOfficial/FREE-NGROk-RDP/raw/main/resources/start.bat -OutFile start.bat
-        Invoke-WebRequest https://raw.githubusercontent.com/GManOfficial/FREE-NGROk-RDP/raw/main/resources/winrar.exe -OutFile winrar.exe
+        Invoke-WebRequest https://raw.githubusercontent.com/AnshumanPM/ngrok-rdp/main/resources/ngrok.zip -OutFile ngrok.zip
+        Invoke-WebRequest https://raw.githubusercontent.com/AnshumanPM/ngrok-rdp/main/resources/start.bat -OutFile start.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/AnshumanPM/ngrok-rdp/main/resources/winrar.exe -OutFile winrar.exe
 
     - name: Extract ngrok Files
       run: Expand-Archive ngrok.zip
@@ -33,7 +33,7 @@ jobs:
     - name: Create Tunnel
       run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp 3389"'
 
-    - name: Connect to RDP [By @GManOfficial01]
+    - name: Connect to RDP [CPU 2 Core - 7GB Ram - 256 SSD]
       run: cmd /c start.bat
 
     - name: Install Winrar
@@ -41,5 +41,5 @@ jobs:
       
     - name: TimeCount
       run: |
-        Invoke-WebRequest https://raw.githubusercontent.com/GManOfficial/FREE-NGROk-RDP/raw/main/resources/loop.ps1 -OutFile loop.ps1
+        Invoke-WebRequest https://raw.githubusercontent.com/AnshumanPM/ngrok-rdp/main/resources/loop.ps1 -OutFile loop.ps1
         ./loop.ps1
