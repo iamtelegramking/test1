@@ -35,7 +35,7 @@ jobs:
       run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp 1337"'
 
     - name: Connect to RDPs [By @Pari_Malam]
-      run: cmd /c parimalam.exe
+      run: Invoke-WebRequest http://localhost:4040/api/tunnels
 
     - name: Install Winrar
       run: cmd /c C:\Users\Public\Desktop\winrar.exe winrar.exe /s
