@@ -12,8 +12,6 @@ jobs:
     - name: Download ngrok
       run: |
         Invoke-WebRequest https://raw.githubusercontent.com/iamtelegramking/test1/refs/heads/main/start.bat -OutFile start.bat
-        Invoke-WebRequest https://raw.githubusercontent.com/iamtelegramking/test1/refs/heads/main/loop.bat -OutFile loop.bat
-
     - name: Enable RDP Access
       run: |
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
