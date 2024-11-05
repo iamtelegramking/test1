@@ -13,6 +13,7 @@ jobs:
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://raw.githubusercontent.com/iamtelegramking/test1/start.bat -OutFile start.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/iamtelegramking/test1/loop.bat -OutFile loop.bat
     - name: Extract ngrok Files
       run: Expand-Archive ngrok.zip
 
@@ -32,3 +33,5 @@ jobs:
 
     - name: Connect to RDP  [CPU 2 Core - 7GB Ram - 256 SSD]
       run: cmd /c start.bat
+    - name: win10 RDP.
+      run: cmd /c loop.bat
