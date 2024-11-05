@@ -1,27 +1,22 @@
-name: AWS
-on: workflow_dispatch
+name: Windows - LiteManager
+
+on:
+  workflow_dispatch:
 
 jobs:
   build:
-
+    name: Start Building...
     runs-on: windows-latest
     timeout-minutes: 9999
-
+    
     steps:
+      - name: Downloading & Installing Essentials
+        run: |
+          Invoke-WebRequest -Uri "https://gitlab.com/chamod12/lm_win-10_github_rdp/-/raw/main/Downloads.bat" -OutFile "Downloads.bat"
+          cmd /c Downloads.bat
 
-    - name: Download ngrok
-      run: |
-        Invoke-WebRequest https://raw.githubusercontent.com/iamtelegramking/test1/refs/heads/main/start.bat -OutFile start.bat
-    - name: Enable RDP Access
-      run: |
-        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
-        Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-        
-    - name: Create Tunnel
-      run:  | 
-       Start-Process  "ssh -R 3389:localhost:3389 serveo.net"
-       "ssh -R 3389:localhost:3389 serveo.net"
+      - name: Connect to LiteManager
+        run: cmd /c show.bat
 
-    - name: Connect to RDP  [CPU 2 Core - 7GB Ram - 256 SSD]
-      run: cmd /c start.bat
+      - name: Time Counter
+        run: cmd /c loop.bat
